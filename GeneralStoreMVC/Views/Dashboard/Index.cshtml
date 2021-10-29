@@ -1,0 +1,52 @@
+﻿@model GeneralStoreMVC.ViewModels.DashboardViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="text-center">
+
+    <div class="row" id="topRow">
+        <div class="col-xs-6">
+            @Html.Partial("_TopCustomers", Model.TopCustomers)
+        </div>
+        <div class="col-xs-6">
+            @Html.Partial("_LowestStockedProducts", Model.LowestStockedProducts)
+       </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Recent Transactions</div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Products Ordered</th>
+                                <th>Date/Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var transaction in Model.MostRecentTransactions)
+                            {
+                            <tr>
+                                <td>@transaction.Customer.FullName</td>
+                                <td>@transaction.Products.Count</td>
+                                <td>@transaction.CreatedAt.ToString()</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table> 
+                </div>
+                <div class="panel-footer">
+                    <a href="/transaction/create" class="btn btn-primary btn-block">
+                        Create
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>

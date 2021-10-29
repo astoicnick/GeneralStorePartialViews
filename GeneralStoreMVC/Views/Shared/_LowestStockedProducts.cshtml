@@ -1,0 +1,25 @@
+﻿@model IEnumerable<GeneralStoreMVC.Models.Product>
+@Styles.Render("~/Content/css")
+
+<div class="panel panel-default">
+    <div class="panel-heading">Low Stock Products</div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Left in Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.InventoryCount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<GeneralStoreMVC.Models.Customer>
+@Styles.Render("~/Content/css")
+
+<div class="panel panel-default">
+    <div class="panel-heading">Top Customers</div>
+    <div class="panel-body">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Times Ordered</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.FullName</td>
+                    <td>@customer.Transactions.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>
